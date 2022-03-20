@@ -1,0 +1,94 @@
+/**
+ * Styles pour l'interface de préparation de commandes
+ * Voir page : https://stackoverflow.com/questions/13566210/declaring-variable-in-javafx-css-file
+ * pour la déclaration de variables dans le code CSS
+ */
+*{
+    /**
+     * Thème clair
+     */
+    -couleur-texte-clair : #405060;
+    -soumettre-clair : darkgreen;
+    -fond-clair: #DDDDDD;
+    /**
+     * Thème sombre
+     */
+    -couleur-texte-sombre : lightgrey;
+    -soumettre-sombre : lightgreen;
+    -fond-sombre: #555555;
+}
+
+/*
+ * Labels
+ */
+Label {
+    -fx-font-size: 12pt;
+    -fx-font-weight: bold;
+}
+
+.label-clair {
+    -fx-text-fill: -couleur-texte-clair;
+}
+
+.label-sombre {
+    -fx-text-fill: -couleur-texte-sombre;
+}
+
+/*
+ * Boutons
+ */
+Button {
+    -fx-font-size: 12pt;
+    -fx-font-weight: bold;
+}
+
+.soumettre-clair {
+    -fx-text-fill: -couleur-texte-sombre;
+    -fx-background-color: -soumettre-clair;
+}
+
+.soumettre-sombre {
+    -fx-text-fill: -couleur-texte-clair;
+    -fx-background-color: -soumettre-sombre;
+}
+
+/*
+ * Layout
+ */
+.environnement-clair {
+    -fx-background-color: -fond-clair;
+}
+.environnement-sombre {
+    -fx-background-color: -fond-sombre;
+}
+
+/*
+ * Rectangle de temps attente
+ */
+.attente-normale {
+    -fx-fill : green;
+}
+.attente-longue {
+    -fx-fill : yellow;
+}
+.attente-critique {
+    -fx-fill : red;
+}
+
+/**
+ * Menu
+ */
+.barre-menu-clair {
+    -fx-background-color: #D4D4D4;
+}
+.menu-clair {
+    -fx-text-fill: -couleur-texte-clair;
+    -fx-background-color: #D4D4D4;
+}
+.barre-menu-sombre {
+    -fx-background-color: #3F3F3F;
+}
+.menu-sombre {
+    -fx-text-fill: -couleur-texte-sombre;
+    -fx-background-color: #3F3F3F;
+}

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="edu.uqtr.demoobs.PreparationCommandeController"
+            stylesheets="@preparation-commande.css"
+            styleClass="environnement-clair"
+            fx:id="racine">
+
+    <fx:define>
+        <ToggleGroup fx:id="theme"/>
+    </fx:define>
+
+    <top>
+        <!-- Menu du système -->
+        <MenuBar styleClass="barre-menu-clair">
+            <Menu text="_Fichier" styleClass="menu-clair">
+                <MenuItem text="_Enregistrer copie de sauvegarde"/>
+                <MenuItem text="_Options"/>
+                <MenuItem text="_Quitter"/>
+            </Menu>
+            <Menu text="_Gestion" styleClass="menu-clair">
+                <Menu text="_Commandes">
+                    <MenuItem text="Commandes en _préparation"/>
+                    <MenuItem text="_Historique des commandes"/>
+                </Menu>
+                <MenuItem text="_Gestion des employés"/>
+                <Menu text="Gestion du _menu">
+                    <MenuItem text="Gestion des _catégories"/>
+                    <MenuItem text="Gestion des _items"/>
+                </Menu>
+            </Menu>
+            <Menu text="_Affichage" styleClass="menu-clair">
+                <RadioMenuItem text="Thème _clair" toggleGroup="$theme" selected="true" userData="CLAIR"/>
+                <RadioMenuItem text="Thème _sombre" toggleGroup="$theme" userData="SOMBRE"/>
+            </Menu>
+            <Menu text="A_ide">
+                <MenuItem text="À _propos"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <!-- Interface de gestion des commandes -->
+
+    <left>
+        <HBox>
+            <padding>
+                <Insets top="10.0" left="10.0" bottom="10.0"/>
+            </padding>
+
+            <ListView fx:id="listeCommandes">
+
+            </ListView>
+        </HBox>
+    </left>
+
+    <center>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets top="10.0" left="10.0" right="10.0" bottom="10.0"/>
+            </padding>
+
+            <GridPane hgap="10.0" vgap="10.0">
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="label-clair">Commande</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="2" editable="false"
+                fx:id="numeroCommande"></TextField>
+
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="label-clair">Temps écoulé</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" editable="false"
+                    fx:id="champTempsEcoule"></TextField>
+                <Rectangle GridPane.columnIndex="2" GridPane.rowIndex="1" width="50.0" height="25.0"
+                styleClass="attente-normale"></Rectangle>
+
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="label-clair">Avancement de la commande</Label>
+                <ProgressBar GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="2" maxWidth="400.0" fx:id="avancementCommande"/>
+
+                <ListView GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="3" fx:id="listeItemsMenu">
+
+                </ListView>
+
+                <Label GridPane.rowIndex="0" GridPane.columnIndex="4" styleClass="label-clair">Responsable</Label>
+                <ListView GridPane.rowIndex="1" GridPane.columnIndex="4" GridPane.rowSpan="3" fx:id="listeCuisiniers">
+
+                </ListView>
+            </GridPane>
+
+            <AnchorPane>
+                <Button AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                styleClass="soumettre-clair">Terminer</Button>
+            </AnchorPane>
+        </VBox>
+
+    </center>
+</BorderPane>
