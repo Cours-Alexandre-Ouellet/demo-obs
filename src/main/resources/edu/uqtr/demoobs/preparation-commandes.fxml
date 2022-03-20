@@ -88,8 +88,9 @@
             </GridPane>
 
             <AnchorPane>
+                <!-- Exercice 4 -->
                 <Button AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                styleClass="soumettre-clair">Terminer</Button>
+                styleClass="soumettre-clair" onAction="#terminerCommande">Terminer</Button>
             </AnchorPane>
         </VBox>
 

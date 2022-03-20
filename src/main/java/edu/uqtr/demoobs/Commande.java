@@ -72,4 +72,31 @@ public class Commande {
     public String toString() {
         return numero;
     }
+
+    /**
+     * [Exercice 1] Modifie le responsable de la commande.
+     *
+     * @param cuisinier le cuisinier responsable.
+     */
+    public void setResponsable(Cuisinier cuisinier) {
+        this.responsable = cuisinier;
+    }
+
+    /**
+     * [Exercice 2] Indique le cuisinier responsable.
+     *
+     * @return le cuisinier responsable ou null si aucun n'a été affecté.
+     */
+    public Cuisinier getResponsable() {
+        return responsable;
+    }
+
+    /**
+     * [Exercice 4] Met à jour l'état de la commande.
+     *
+     * @param terminee l'état de la commande.
+     */
+    public void setTerminee(boolean terminee) {
+        this.terminee = terminee;
+    }
 }

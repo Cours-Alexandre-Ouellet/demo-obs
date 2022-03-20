@@ -2,7 +2,7 @@ package edu.uqtr.demoobs;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.ListView;
@@ -77,6 +77,11 @@ public class PreparationCommandeController {
     private ProgressBar avancementCommande;
 
     /**
+     * [Exercice 1] On a besoin d'une référence sur la commande active
+     */
+    private Commande commandeActive;
+
+    /**
      * Crée un nouveau contrôleur de gestion des commandes.
      */
     public PreparationCommandeController() {
@@ -125,8 +130,6 @@ public class PreparationCommandeController {
         listeCommandes.getItems().addAll(commandes);
         listeCuisiniers.getItems().addAll(cuisiniers);
 
-
-
         // Observateur sur la liste des commandes
         listeCommandes.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Commande>() {
             @Override
@@ -141,6 +144,49 @@ public class PreparationCommandeController {
          */
 
         avancementCommande.setProgress(0.0);
+
+        // [Exercice 1] Observateur pour le choix de cuisinier
+        listeCuisiniers.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Cuisinier>() {
+            @Override
+            public void changed(ObservableValue<? extends Cuisinier> observable, Cuisinier oldValue, Cuisinier newValue) {
+                commandeActive.setResponsable(newValue);
+            }
+        });
+
+        // [Exercice 3] On sélectionne la première commande (on s'assure que l'index existe)
+        afficherPremiereCommande();
+
+    }
+
+    /**
+     * Affiche la première commande si elle existe.
+     */
+    @FXML
+    private void afficherPremiereCommande() {
+
+        if (listeCommandes.getItems().size() > 0) {
+            Commande premiereCommande = listeCommandes.getItems().get(0);
+
+            // Sélection dans la liste et mise à jour de l'affichage
+            listeCommandes.getSelectionModel().select(premiereCommande);
+            afficherCommande(premiereCommande);
+        }
+    }
+
+    /**
+     * Marque une commande comme terminée et met à jour la liste.
+     *
+     * @param event l'événement
+     */
+    @FXML
+    private void terminerCommande(ActionEvent event) {
+        if (commandeActive == null) {
+            return;
+        }
+
+        commandeActive.setTerminee(true);
+        listeCommandes.getItems().remove(commandeActive);
+        afficherPremiereCommande();
     }
 
     /**
@@ -149,6 +195,17 @@ public class PreparationCommandeController {
      * @param commande la commande à afficher.
      */
     private void afficherCommande(Commande commande) {
+        // [Exercice 1] Mise à jour de la commande active
+        commandeActive = commande;
+
+        // [Exercice 4] Évite un null pointer exception
+        if(commande == null) {
+            listeItemsMenu.getItems().clear();
+            numeroCommande.setText("");
+            champTempsEcoule.setText("");
+            return;
+        }
+
         // Affichage des champs
         numeroCommande.setText(commande.toString());
 
@@ -163,6 +220,9 @@ public class PreparationCommandeController {
         // Remplissage des items du menu
         listeItemsMenu.getItems().clear();
         listeItemsMenu.getItems().addAll(commande.getItems());
+
+        // [Exercice 2]
+        listeCuisiniers.getSelectionModel().select(commandeActive.getResponsable());
     }
 
     /**
