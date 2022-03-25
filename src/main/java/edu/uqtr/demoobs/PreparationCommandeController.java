@@ -4,12 +4,14 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -138,22 +140,24 @@ public class PreparationCommandeController {
             }
         });
 
-        /*
-         * Alternative en lambda à la ligne précédente :
-         * listeCommandes.getSelectionModel().selectedItemProperty().addListener((v, o, n) -> afficherCommande(n));
-         */
-
+        // Avancement de la commande
         avancementCommande.setProgress(0.0);
 
-        // [Exercice 1] Observateur pour le choix de cuisinier
+        // Observateur sur la liste des cuisiniers
         listeCuisiniers.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Cuisinier>() {
             @Override
             public void changed(ObservableValue<? extends Cuisinier> observable, Cuisinier oldValue, Cuisinier newValue) {
                 commandeActive.setResponsable(newValue);
+
+                // Rafraîchissement de l'affichage des commandes
+                listeCommandes.refresh();
             }
         });
 
-        // [Exercice 3] On sélectionne la première commande (on s'assure que l'index existe)
+        // On change la fabrique pour les cellules de la commande
+        listeCommandes.setCellFactory(new FabriqueCelluleCommande());
+
+        // Affichage par défaut
         afficherPremiereCommande();
 
     }
@@ -221,8 +225,31 @@ public class PreparationCommandeController {
         listeItemsMenu.getItems().clear();
         listeItemsMenu.getItems().addAll(commande.getItems());
 
-        // [Exercice 2]
+        // Sélectionne le cuisinier actif
         listeCuisiniers.getSelectionModel().select(commandeActive.getResponsable());
+    }
+
+    /**
+     * Ouvre une fenêtre modale pour ajouter une nouvelle commande. La fenêtre reste sur le dessus tant qu'elle
+     * n'a pas été résolue.
+     */
+    @FXML
+    private void ajouterCommande() {
+        try {
+            Stage stage = new Stage();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(PizzardoApplication.class.getResource("ajout-commande.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 325, 700);
+            stage.setTitle("Ajouter une commande");
+            stage.setScene(scene);
+            stage.setAlwaysOnTop(true);
+            stage.show();
+        } catch (IOException exception) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setContentText("Impossible de charger l'interface demandée. Contactez un administrateur.");
+            alert.getButtonTypes().add(ButtonType.OK);
+        }
     }
 
     /**
@@ -238,5 +265,7 @@ public class PreparationCommandeController {
 
         return Integer.toString(temps);
     }
+
+
 
 }

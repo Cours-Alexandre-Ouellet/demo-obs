@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.skin.TabPaneSkin.TabHeaderArea?>
+<?import javafx.scene.control.skin.TabPaneSkin.TabControlButtons?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="edu.uqtr.demoobs.AjoutCommandeController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <top>
+        <HBox alignment="CENTER">
+            <padding>
+                <Insets top="10.0" left="10.0" right="10.0" bottom="10.0"></Insets>
+            </padding>
+            <Text textAlignment="CENTER">Ajouter une commande</Text>
+        </HBox>
+    </top>
+    <center>
+        <GridPane vgap="10.0" hgap="10.0">
+            <padding>
+                <Insets top="10.0" left="10.0" right="10.0" bottom="10.0"></Insets>
+            </padding>
+            <Label GridPane.rowIndex="0" GridPane.columnIndex="0">Numéro de commande</Label>
+            <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" editable="false" fx:id="numeroCommande"/>
+
+            <Label GridPane.rowIndex="1" GridPane.columnIndex="0">Numéro civique</Label>
+            <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="numeroCivique"/>
+
+            <Label GridPane.rowIndex="2" GridPane.columnIndex="0">Rue</Label>
+            <TextField GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="rue"/>
+
+            <Label GridPane.rowIndex="3" GridPane.columnIndex="0">Ville</Label>
+            <TextField GridPane.rowIndex="3" GridPane.columnIndex="1" fx:id="ville"/>
+
+            <Label GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2">Liste de produits</Label>
+            <TabPane GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                <Tab text="Plats principaux" closable="false">
+                    <ListView fx:id="listePlatsPrincipaux"/>
+                </Tab>
+                <Tab text="Accompagnements" closable="false">
+                    <ListView fx:id="listeAccompagnements"/>
+                </Tab>
+            </TabPane>
+            <AnchorPane GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                <HBox AnchorPane.rightAnchor="0" spacing="10.0">
+                    <Button>A_jouter</Button>
+                    <Button>_Annuler</Button>
+                </HBox>
+            </AnchorPane>
+        </GridPane>
+    </center>
+</BorderPane>

@@ -24,6 +24,7 @@
             </Menu>
             <Menu text="_Gestion" styleClass="menu-clair">
                 <Menu text="_Commandes">
+                    <MenuItem text="_Ajout de commande" onAction="#ajouterCommande"/>
                     <MenuItem text="Commandes en _préparation"/>
                     <MenuItem text="_Historique des commandes"/>
                 </Menu>

@@ -23,4 +23,8 @@ public class ItemMenu {
         return nom;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
 }

@@ -23,4 +23,8 @@ public class Cuisinier {
     public String toString() {
         return nom;
     }
+
+    public String getNom() {
+        return nom;
+    }
 }

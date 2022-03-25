@@ -34,6 +34,11 @@ public class Commande {
     private boolean terminee;
 
     /**
+     * Adresse à laquelle la livraison aura lieu.
+     */
+    private Adresse adresse;
+
+    /**
      * Crée une nouvelle commande qui doit être préparée par un cuisinier à déterminer.
      *
      * @param numero    le numéro de la commande.
@@ -98,5 +103,9 @@ public class Commande {
      */
     public void setTerminee(boolean terminee) {
         this.terminee = terminee;
+    }
+
+    public String getNumero() {
+        return numero;
     }
 }
