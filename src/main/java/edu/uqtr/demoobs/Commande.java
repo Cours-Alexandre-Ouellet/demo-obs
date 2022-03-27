@@ -44,11 +44,13 @@ public class Commande {
      * @param numero    le numéro de la commande.
      * @param reception la date et l'heure de réception.
      * @param itemsMenu les items commandés.
+     * @param adresse   l'adresse de la commande.
      */
-    public Commande(String numero, Calendar reception, ArrayList<ItemMenu> itemsMenu) {
+    public Commande(String numero, Calendar reception, ArrayList<ItemMenu> itemsMenu, Adresse adresse) {
         this.numero = numero;
         this.reception = reception;
         this.itemsMenu = itemsMenu;
+        this.adresse = adresse;
 
         responsable = null;
         terminee = false;

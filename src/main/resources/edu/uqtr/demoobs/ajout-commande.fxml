@@ -43,7 +43,7 @@
             <Label GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.columnSpan="2">Liste de produits</Label>
             <TabPane GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="2">
                 <Tab text="Plats principaux" closable="false">
-                    <ListView fx:id="listePlatsPrincipaux"/>
+                    <ListView fx:id="listePlatsPrincipaux" />
                 </Tab>
                 <Tab text="Accompagnements" closable="false">
                     <ListView fx:id="listeAccompagnements"/>

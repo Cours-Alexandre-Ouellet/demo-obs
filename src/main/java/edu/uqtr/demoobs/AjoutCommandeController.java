@@ -2,6 +2,7 @@ package edu.uqtr.demoobs;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
@@ -65,8 +66,15 @@ public class AjoutCommandeController {
     @FXML
     private void initialize() {
         numeroCommande.setText(GenerateurNumeroCommande.prochainNumero());
-    }
 
+        // Peuplement
+        listePlatsPrincipaux.getItems().addAll(platsPrincipaux);
+        listeAccompagnements.getItems().addAll(accompagnements);
+
+        // Autorisation de sélection multiple
+        listePlatsPrincipaux.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        listeAccompagnements.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    }
 
     /**
      * Initialise les données des listes d'items du menu
