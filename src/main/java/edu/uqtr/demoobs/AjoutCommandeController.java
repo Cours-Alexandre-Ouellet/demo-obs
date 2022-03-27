@@ -1,5 +1,6 @@
 package edu.uqtr.demoobs;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -58,7 +59,14 @@ public class AjoutCommandeController {
      */
     private ArrayList<ItemMenu> accompagnements;
 
+    /**
+     * Référence vers la liste des commandes dans le système.
+     */
+    private ObservableList<Commande> commandes;
+
     public AjoutCommandeController() {
+        commandes = DonneesCommandes.getListeCommandes();
+
         initialiserDonnees();
     }
 

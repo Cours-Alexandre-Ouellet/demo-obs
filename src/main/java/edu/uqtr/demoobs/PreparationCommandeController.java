@@ -2,6 +2,7 @@ package edu.uqtr.demoobs;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,12 +24,12 @@ public class PreparationCommandeController {
     /**
      * Liste des cuisiniers dans le système.
      */
-    ArrayList<Cuisinier> cuisiniers;
+    private ArrayList<Cuisinier> cuisiniers;
 
     /**
      * Liste des commandes dans le système.
      */
-    ArrayList<Commande> commandes;
+    private ObservableList<Commande> commandes;
 
     /**
      * Gère le thème actif dans le menu.
@@ -88,33 +89,15 @@ public class PreparationCommandeController {
      */
     public PreparationCommandeController() {
         cuisiniers = new ArrayList<>();
-        commandes = new ArrayList<>();
+        commandes = DonneesCommandes.getListeCommandes();
 
         genererDonnees();
     }
 
     /**
-     * Crée des données temporaires pour le système.
-     */
+     * Crée la liste des cuisiniers
+      */
     private void genererDonnees() {
-        // Première commande
-        ArrayList<ItemMenu> itemCommande1 = new ArrayList<ItemMenu>();
-        itemCommande1.add(new ItemMenu("Pizza"));
-        itemCommande1.add(new ItemMenu("Frites (Large)"));
-        Calendar receptionCommande1 = Calendar.getInstance();
-        receptionCommande1.set(2022, 3, 23, 17, 30);
-
-        commandes.add(new Commande("1254-124", receptionCommande1, itemCommande1));
-
-        // Seconde commande
-        ArrayList<ItemMenu> itemCommande2 = new ArrayList<ItemMenu>();
-        itemCommande2.add(new ItemMenu("Poutine"));
-        itemCommande2.add(new ItemMenu("Soda (Moyen)"));
-        Calendar receptionCommande2 = Calendar.getInstance();
-        receptionCommande2.set(2022, 3, 23, 9, 2);
-
-        commandes.add(new Commande("1254-125", receptionCommande2, itemCommande2));
-
         // Liste de cuisiniers
         cuisiniers.add(new Cuisinier("Véronique"));
         cuisiniers.add(new Cuisinier("Charles"));
