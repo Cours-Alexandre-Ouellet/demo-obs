@@ -16,8 +16,10 @@ public class DonneesCommandes {
      */
     private static ObservableList<Commande> commandes;
 
-    // Crée les données pour les commandes
-    {
+    /**
+     * Crée les données pour les commandes
+     */
+    private static void creerCommandes() {
         commandes = FXCollections.observableArrayList();
 
         // Première commande
@@ -45,6 +47,10 @@ public class DonneesCommandes {
      * @return la liste des commandes
      */
     public static ObservableList<Commande> getListeCommandes() {
+        if(commandes == null) {
+            creerCommandes();
+        }
+
         return commandes;
     }
 
