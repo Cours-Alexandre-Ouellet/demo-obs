@@ -27,7 +27,7 @@ public class DonneesCommandes {
         Calendar receptionCommande1 = Calendar.getInstance();
         receptionCommande1.set(2022, 3, 23, 17, 30);
 
-        commandes.add(new Commande("1254-124", receptionCommande1, itemCommande1));
+        commandes.add(new Commande("1254-124", receptionCommande1, itemCommande1, null));
 
         // Seconde commande
         ArrayList<ItemMenu> itemCommande2 = new ArrayList<ItemMenu>();
@@ -36,7 +36,7 @@ public class DonneesCommandes {
         Calendar receptionCommande2 = Calendar.getInstance();
         receptionCommande2.set(2022, 3, 23, 9, 2);
 
-        commandes.add(new Commande("1254-125", receptionCommande2, itemCommande2));
+        commandes.add(new Commande("1254-125", receptionCommande2, itemCommande2, null));
 
     }
 
