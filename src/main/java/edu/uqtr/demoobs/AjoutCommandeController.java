@@ -7,9 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -193,8 +191,16 @@ public class AjoutCommandeController {
         TableColumn<ItemCommande, IntegerProperty> colonneQuantite = new TableColumn<>("Quantité");
         colonneQuantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
 
+        // Colonne d'incrément
+        TableColumn<ItemCommande, Void> colonneIncrement = new TableColumn<>("");
+        colonneIncrement.setCellFactory(new FabriqueCelluleBouton("+", FabriqueCelluleBouton.Operation.INCREMENT));
+
+        // Colonne de décrément
+        TableColumn<ItemCommande, Void> colonneDecrement = new TableColumn<>("");
+        colonneDecrement.setCellFactory(new FabriqueCelluleBouton("-", FabriqueCelluleBouton.Operation.DECREMENT));
+
         // Ajoute le contenu dans la table
         table.getItems().addAll(items);
-        table.getColumns().addAll(colonneNom, colonneQuantite);
+        table.getColumns().addAll(colonneNom, colonneQuantite, colonneIncrement, colonneDecrement);
     }
 }
