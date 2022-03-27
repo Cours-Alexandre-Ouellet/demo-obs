@@ -51,8 +51,8 @@
             </TabPane>
             <AnchorPane GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="2">
                 <HBox AnchorPane.rightAnchor="0" spacing="10.0">
-                    <Button>A_jouter</Button>
-                    <Button>_Annuler</Button>
+                    <Button onAction="#ajouter">A_jouter</Button>
+                    <Button onAction="#annuler">_Annuler</Button>
                 </HBox>
             </AnchorPane>
         </GridPane>

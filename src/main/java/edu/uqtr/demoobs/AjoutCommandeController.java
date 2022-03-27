@@ -1,12 +1,16 @@
 package edu.uqtr.demoobs;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -109,5 +113,35 @@ public class AjoutCommandeController {
 
         accompagnements = new ArrayList<>();
         accompagnements.addAll(List.of(itemsAccompagnement));
+    }
+
+    @FXML
+    private void ajouter(ActionEvent event) {
+        ArrayList<ItemMenu> itemsCommandes = new ArrayList<>();
+        itemsCommandes.addAll(listePlatsPrincipaux.getSelectionModel().getSelectedItems());
+        itemsCommandes.addAll(listeAccompagnements.getSelectionModel().getSelectedItems());
+
+        commandes.add(new Commande(
+                numeroCommande.getText(),
+                Calendar.getInstance(),
+                itemsCommandes,
+                new Adresse(numeroCivique.getText(), rue.getText(), ville.getText())
+        ));
+
+        fermer((Node) event.getSource());
+    }
+
+    @FXML
+    private void annuler(ActionEvent event) {
+        fermer((Node) event.getSource());
+    }
+
+    /**
+     * Ferme la fenêtre
+     * @param element un élément quelconque de la fenêtre à fermer.
+     */
+    private void fermer(Node element) {
+        Stage stage = (Stage) element.getScene().getWindow();
+        stage.close();
     }
 }
