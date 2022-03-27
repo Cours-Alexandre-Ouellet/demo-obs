@@ -65,7 +65,7 @@ public class PreparationCommandeController {
      * Affichage de la liste des items du menu dans la commande.
      */
     @FXML
-    private ListView<ItemMenu> listeItemsMenu;
+    private ListView<ItemCommande> listeItemsMenu;
 
     /**
      * Affichage de la liste des cuisiniers.

@@ -23,18 +23,18 @@ public class DonneesCommandes {
         commandes = FXCollections.observableArrayList();
 
         // Première commande
-        ArrayList<ItemMenu> itemCommande1 = new ArrayList<ItemMenu>();
-        itemCommande1.add(new ItemMenu("Pizza"));
-        itemCommande1.add(new ItemMenu("Frites (Large)"));
+        ArrayList<ItemCommande> itemCommande1 = new ArrayList<ItemCommande>();
+        itemCommande1.add(new ItemCommande(new ItemMenu("Pizza")));
+        itemCommande1.add(new ItemCommande(new ItemMenu("Frites (Large)")));
         Calendar receptionCommande1 = Calendar.getInstance();
         receptionCommande1.set(2022, 3, 23, 17, 30);
 
         commandes.add(new Commande("1254-124", receptionCommande1, itemCommande1, null));
 
         // Seconde commande
-        ArrayList<ItemMenu> itemCommande2 = new ArrayList<ItemMenu>();
-        itemCommande2.add(new ItemMenu("Poutine"));
-        itemCommande2.add(new ItemMenu("Soda (Moyen)"));
+        ArrayList<ItemCommande> itemCommande2 = new ArrayList<ItemCommande>();
+        itemCommande2.add(new ItemCommande(new ItemMenu("Poutine")));
+        itemCommande2.add(new ItemCommande(new ItemMenu("Soda (Moyen)")));
         Calendar receptionCommande2 = Calendar.getInstance();
         receptionCommande2.set(2022, 3, 23, 9, 2);
 

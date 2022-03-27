@@ -11,7 +11,7 @@ public class Commande {
     /**
      * Items commandés sur le menu.
      */
-    private ArrayList<ItemMenu> itemsMenu;
+    private ArrayList<ItemCommande> itemsMenu;
 
     /**
      * Cuisinier assigné à la commande.
@@ -46,7 +46,7 @@ public class Commande {
      * @param itemsMenu les items commandés.
      * @param adresse   l'adresse de la commande.
      */
-    public Commande(String numero, Calendar reception, ArrayList<ItemMenu> itemsMenu, Adresse adresse) {
+    public Commande(String numero, Calendar reception, ArrayList<ItemCommande> itemsMenu, Adresse adresse) {
         this.numero = numero;
         this.reception = reception;
         this.itemsMenu = itemsMenu;
@@ -71,7 +71,7 @@ public class Commande {
      *
      * @return la liste des items commandés.
      */
-    public ArrayList<ItemMenu> getItems() {
+    public ArrayList<ItemCommande> getItems() {
         return itemsMenu;
     }
 
