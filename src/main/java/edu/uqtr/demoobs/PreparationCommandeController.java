@@ -112,7 +112,7 @@ public class PreparationCommandeController {
         theme.selectedToggleProperty().addListener(new ChangementThemeListener(racine));
 
         // Peuplement de la liste des commandes et des cuisiniers
-        listeCommandes.getItems().addAll(commandes);
+        listeCommandes.setItems(commandes);
         listeCuisiniers.getItems().addAll(cuisiniers);
 
         // Observateur sur la liste des commandes
