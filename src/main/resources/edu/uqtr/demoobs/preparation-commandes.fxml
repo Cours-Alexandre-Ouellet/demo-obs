@@ -5,43 +5,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
             fx:controller="edu.uqtr.demoobs.PreparationCommandeController"
             stylesheets="@preparation-commande.css"
             styleClass="environnement-clair"
             fx:id="racine">
 
-    <fx:define>
-        <ToggleGroup fx:id="theme"/>
-    </fx:define>
-
     <top>
-        <!-- Menu du système -->
-        <MenuBar styleClass="barre-menu-clair">
-            <Menu text="_Fichier" styleClass="menu-clair">
-                <MenuItem text="_Enregistrer copie de sauvegarde"/>
-                <MenuItem text="_Options"/>
-                <MenuItem text="_Quitter"/>
-            </Menu>
-            <Menu text="_Gestion" styleClass="menu-clair">
-                <Menu text="_Commandes">
-                    <MenuItem text="_Ajout de commande" onAction="#ajouterCommande"/>
-                    <MenuItem text="Commandes en _préparation"/>
-                    <MenuItem text="_Historique des commandes"/>
-                </Menu>
-                <MenuItem text="_Gestion des employés"/>
-                <Menu text="Gestion du _menu">
-                    <MenuItem text="Gestion des _catégories"/>
-                    <MenuItem text="Gestion des _items"/>
-                </Menu>
-            </Menu>
-            <Menu text="_Affichage" styleClass="menu-clair">
-                <RadioMenuItem text="Thème _clair" toggleGroup="$theme" selected="true" userData="CLAIR"/>
-                <RadioMenuItem text="Thème _sombre" toggleGroup="$theme" userData="SOMBRE"/>
-            </Menu>
-            <Menu text="A_ide">
-                <MenuItem text="À _propos"/>
-            </Menu>
-        </MenuBar>
+        <fx:include fx:id="menu" source="menu.fxml"/>
     </top>
 
     <!-- Interface de gestion des commandes -->

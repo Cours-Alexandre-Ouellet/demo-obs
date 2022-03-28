@@ -5,14 +5,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -30,18 +25,6 @@ public class PreparationCommandeController {
      * Liste des commandes dans le système.
      */
     private ObservableList<Commande> commandes;
-
-    /**
-     * Gère le thème actif dans le menu.
-     */
-    @FXML
-    private ToggleGroup theme;
-
-    /**
-     * Élément racine de la fenêtre.
-     */
-    @FXML
-    private Parent racine;
 
     /**
      * Affichage de la liste des commandes.
@@ -80,6 +63,18 @@ public class PreparationCommandeController {
     private ProgressBar avancementCommande;
 
     /**
+     * Menu du système
+     */
+    @FXML
+    private MenuController menuController;
+
+    /**
+     * Élément racine de la fenêtre.
+     */
+    @FXML
+    private Parent racine;
+
+    /**
      * [Exercice 1] On a besoin d'une référence sur la commande active
      */
     private Commande commandeActive;
@@ -108,8 +103,7 @@ public class PreparationCommandeController {
      * Initialise les données de l'interface après création des objets JavaFX.
      */
     public void initialize() {
-        // Ajout du listener pour le changement de thème
-        theme.selectedToggleProperty().addListener(new ChangementThemeListener(racine));
+        menuController.setRacine(racine);
 
         // Peuplement de la liste des commandes et des cuisiniers
         listeCommandes.setItems(commandes);
@@ -210,29 +204,6 @@ public class PreparationCommandeController {
 
         // Sélectionne le cuisinier actif
         listeCuisiniers.getSelectionModel().select(commandeActive.getResponsable());
-    }
-
-    /**
-     * Ouvre une fenêtre modale pour ajouter une nouvelle commande. La fenêtre reste sur le dessus tant qu'elle
-     * n'a pas été résolue.
-     */
-    @FXML
-    private void ajouterCommande() {
-        try {
-            Stage stage = new Stage();
-
-            FXMLLoader fxmlLoader = new FXMLLoader(PizzardoApplication.class.getResource("ajout-commande.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 325, 700);
-            stage.setTitle("Ajouter une commande");
-            stage.setScene(scene);
-            stage.setAlwaysOnTop(true);
-            stage.show();
-        } catch (IOException exception) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setContentText("Impossible de charger l'interface demandée. Contactez un administrateur.");
-            alert.getButtonTypes().add(ButtonType.OK);
-        }
     }
 
     /**
