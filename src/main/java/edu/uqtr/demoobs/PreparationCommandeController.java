@@ -149,7 +149,9 @@ public class PreparationCommandeController {
         listeCuisiniers.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Cuisinier>() {
             @Override
             public void changed(ObservableValue<? extends Cuisinier> observable, Cuisinier oldValue, Cuisinier newValue) {
-                commandeActive.setResponsable(newValue);
+                if (commandeActive != null) {
+                    commandeActive.setResponsable(newValue);
+                }
             }
         });
 
@@ -199,7 +201,7 @@ public class PreparationCommandeController {
         commandeActive = commande;
 
         // [Exercice 4] Évite un null pointer exception
-        if(commande == null) {
+        if (commande == null) {
             listeItemsMenu.getItems().clear();
             numeroCommande.setText("");
             champTempsEcoule.setText("");
