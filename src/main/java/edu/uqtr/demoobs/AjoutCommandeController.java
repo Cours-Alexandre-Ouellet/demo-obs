@@ -180,21 +180,6 @@ public class AjoutCommandeController {
      * @param table la table à mettre en forme.
      */
     private void creerTableauItemCommande(TableView<ItemCommande> table, ArrayList<ItemCommande> items) {
-        // Colonne pour les noms
-        TableColumn<ItemCommande, String> colonneNom = new TableColumn<>("Item");
-        colonneNom.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ItemCommande, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<ItemCommande, String> param) {
-                return new ReadOnlyObjectWrapper<>(param.getValue().getItem().getNom());
-            }
-        });
 
-        // Colonne pour les quantités
-        TableColumn<ItemCommande, IntegerProperty> colonneQuantite = new TableColumn<>("Quantité");
-        colonneQuantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
-
-        // Ajoute le contenu dans la table
-        table.getItems().addAll(items);
-        table.getColumns().addAll(colonneNom, colonneQuantite);
     }
 }
